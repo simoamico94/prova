@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Basic Page Needs -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ username }} session</title>
+
+    <!-- Bootstrap css file -->
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/bootstrap-select.min.css" rel="stylesheet">
+    <!-- Main structure css file -->
+    <link href="../static/css/session.css" rel="stylesheet">
+    <!-- Font awesome css file -->
+    <link href="../static/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="menu-tab" id="div1" style="display: none">
+        <p>Profile</p>
+        <a class="close-div" onClick="hideAll();return false;">X</a>
+    </div>
+    <div class="menu-tab" id="div2" style="display: none">
+        <p>Data</p>
+        <a class="close-div" onClick="hideAll();return false;">X</a>
+    </div>
+    <div class="menu-tab" id="div3" style="display: none">
+        <h1>Leave a feedback to improve the next ones</h1>
+            <form id="close_session" class="form" action="{{ url_for('close_session', username=username) }}" method="post">
+                <div class="row">
+                    <div>
+                        <label>How much do you feel good now?</label><br>
+                        <select name="post_status" class="selectpicker" data-size="4">
+                            <option value="0">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                        <button type="submit" id="session-button" value="Enter">Close session</button>
+                </div>
+            </form>
+        <a class="close-div" onClick="hideAll();return false;" style="color:black">X</a>
+    </div>
+
+    <div id="circle">
+        <i class="icon1 fa fa-bars fa-lg"></i>
+        <i class="icon2 fa fa-bars fa-lg" style="transform:rotate(90deg)"></i>
+    </div>
+    <div id="sub">
+        <div id="circle" id="myButton" type="button" name="answer">
+            <a href="#" onClick="toggleDiv('div1');">
+                <i class="icon1 fa fa-user fa-lg"></i>
+                <i class="icon2 fa fa-asterisk fa-lg"></i>
+            </a>
+            <span class="menu"><a href="#" onClick="toggleDiv('div1');">Profile</a></span>
+        </div>
+        <div id="circle">
+            <a href="#" onClick="toggleDiv('div2');">
+                <i class="icon1 fa fa-database fa-lg"></i>
+                <i class="icon2 fa fa-asterisk fa-lg"></i>
+            </a>
+            <span class="menu"><a href="#" onClick="toggleDiv('div2');">Data</a></span>
+        </div>
+        <div id="circle">
+            <a href="#" onClick="toggleDiv('div3');">
+                <i class="icon1 fa fa-times fa-lg"></i>
+                <i class="icon2 fa fa-asterisk fa-lg"></i>
+            </a>
+            <span class="menu"><a href="#" onClick="toggleDiv('div3');">End session</a></span>
+        </div>
+    </div>
+
+    <!--CORE animation-->
+    <canvas id="c"></canvas>
+
+    <!--BACKGROUND animation-->
+    <ul id="scene" data-friction-x="0.03" data-friction-y="0.05">
+        <li class="layer" id="specks" data-depth="0.1"></li>
+        <li class="layer" id="layer-1" data-depth="0.15">
+            <div class="img" id="img-1"></div>
+        </li>
+        <li class="layer" id="layer-2" data-depth="0.25">
+            <div class="img" id="img-2"></div>
+        </li>
+        <li class="layer" id="layer-3" data-depth="0.45">
+            <div class="img" id="img-3"></div>
+        </li>
+    </ul>
+
+    <!-- initialize jQuery Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/bootstrap-select.min.js"></script>
+    <!-- Additional graphic js -->
+    <script src="../static/js/animation.js"></script>
+    <!-- index custom js -->
+    <script src="../static/js/index.js"></script>
+</body>
+</html>
